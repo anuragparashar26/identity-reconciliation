@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000;
 
 // middleware
 app.use(express.json());
+app.set("json spaces", 2);
 
 // health check
 app.get("/", (_req, res) => {
