@@ -77,6 +77,49 @@ npm run dev
 
 The server will start at `http://localhost:3000`.
 
+## Deploy to Vercel
+
+This repository includes a Vercel function at `api/index.ts`. The `vercel.json`
+rewrite keeps the API available at the root URL, so the endpoint is
+`https://<your-project>.vercel.app/identify`.
+
+1. Create a production PostgreSQL database. Vercel Postgres, Neon, Supabase,
+   or another hosted PostgreSQL provider will work.
+2. Push the repository to GitHub and import it into Vercel, or deploy with the
+   Vercel CLI:
+
+   ```bash
+   npx vercel
+   ```
+
+3. Add `DATABASE_URL` in the Vercel project settings for Preview and
+   Production. Use the provider's pooled PostgreSQL connection string when
+   available.
+4. Deploy the project:
+
+   ```bash
+   npx vercel --prod
+   ```
+
+5. Apply the committed Prisma migrations against the production database
+   before sending requests:
+
+   ```bash
+   npx prisma migrate deploy
+   ```
+
+   Alternatively, run this command from a shell with the production
+   `DATABASE_URL` set. Do not use `prisma migrate dev` against production.
+
+The root health check can be tested with:
+
+```bash
+curl https://<your-project>.vercel.app/
+```
+
+Keep `DATABASE_URL` out of the repository and configure it through Vercel's
+environment-variable settings.
+
 ## API
 
 ### `POST /identify`
