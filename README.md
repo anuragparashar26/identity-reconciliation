@@ -2,7 +2,7 @@
 
 A backend service for Identity Reconciliation task. It links customer contacts across multiple purchases by matching email addresses and phone numbers.
 
-### **BACKEND IS LIVE:** [CLICK HERE](https://identity-reconciliation-production-c447.up.railway.app)
+### **BACKEND IS LIVE:** [CLICK HERE](https://identity-reconciliation-navy.vercel.app/)
 
 ## Tech Stack
 
